@@ -20,7 +20,7 @@ const Navigation = () => {
   };
 
   const dispatch = useDispatch();
-  const { isAuth } = useSelector((state) => state.auth);
+  const { isAuth, user } = useSelector((state) => state.auth);
 
   async function logoutUser() {
     try {
@@ -37,7 +37,23 @@ const Navigation = () => {
         <img src="/img/logo.png" alt="logo" />
         <span style={logoText}>Coderhouse</span>
       </Link>
-      {isAuth && <button onClick={logoutUser}>Logout</button>}
+      <div className={styles.navRight}>
+        <h3>{user.name}</h3>
+        <Link to="/">
+          <img
+            className={styles.avatar}
+            src={user.avatar}
+            width="40"
+            height="40"
+            alt="avatar"
+          />
+          {isAuth && (
+            <button className={styles.logoutButton} onClick={logoutUser}>
+              <img src="/img/logout.png" alt="logout" />
+            </button>
+          )}
+        </Link>
+      </div>
     </nav>
   );
 };
