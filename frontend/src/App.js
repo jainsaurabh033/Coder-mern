@@ -8,6 +8,7 @@ import Rooms from "./pages/Rooms/Rooms";
 import { useSelector } from "react-redux";
 import { useLoadingWithRefresh } from "./hooks/useLoadingWithRefresh";
 import Loader from "./components/Shared/Loader/Loader";
+import Room from "./pages/Room/Room";
 
 function App() {
   // call refresh endpoint
@@ -28,6 +29,7 @@ function App() {
           element={<SemiProtectedRoute Component={Activate} />}
         />
         <Route path="/rooms" element={<ProtectedRoute Component={Rooms} />} />
+        <Route path="/room/:id" element={<ProtectedRoute Component={Room} />} />
       </Routes>
     </BrowserRouter>
   );

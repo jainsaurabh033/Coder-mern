@@ -1,10 +1,19 @@
 import React from "react";
-import sytles from "./TextInput.module.css";
+import styles from "./TextInput.module.css";
+
 const TextInput = (props) => {
   return (
     <div>
-      <input className={sytles.input} type="text" {...props} />
+      <input
+        className={styles.input}
+        style={{
+          width: props.fullwidth === "true" ? "100%" : "inherit",
+        }}
+        type="text"
+        {...props}
+      />
     </div>
   );
 };
+
 export default TextInput;
